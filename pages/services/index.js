@@ -1,68 +1,62 @@
-import React, { Fragment } from 'react'
-import WhatweDo from '../../components/WhatweDo';
-import Head from 'next/head';
-import Icon from '../../components/UI/Icon';
-import config from '../../config';
-const index = ({services,what_we_do}) => {
-    return (
-        <Fragment>
-            <Head>
-              <title>Techie IT:Services</title>
-            </Head>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12 rd-pag">
-                        <span>Services</span>
-                        <span>
-                            <Icon />
-                        </span>
-                    </div>
-                </div>
+import React, { Fragment } from "react";
+import WhatweDo from "../../components/WhatweDo";
+import Head from "next/head";
+import Icon from "../../components/UI/Icon";
+import config from "../../config";
+import ServiceSection from "../../components/ServiceSection";
+const index = ({ services, what_we_do }) => {
+  return (
+    <Fragment>
+      <Head>
+        <title>Techie IT:Services</title>
+      </Head>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12 rd-pag">
+            <span>Services</span>
+            <span>
+              <Icon />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="main-contain">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 title ">
+              <h1>
+                A <br /> <span>Full-Servic10de</span> <br /> Digital Agency
+              </h1>
+              <h2 className="service-animation">
+                Techie IT offers everything from web design, corporate identity,
+                digital marketing, mobile, and brand positioning.
+              </h2>
+              <p>
+                Techie IT Pvt. Ltd. is a Nepali IT company that specializes in
+                providing IT support and solution to individuals as well as
+                small and medium businesses.
+                <br />
+                <br />
+                Established in 2015 with aim to be “your enthusiastic
+                supporter”, we value the development of long term relationships
+                with our clients. We always aim to demonstrate integrity and
+                reliability, and to ultimately become a trusted partner.
+              </p>
             </div>
-        <div className="main-contain">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 title ">
-                        <h1>A <br/> <span>Full-Service</span> <br/> Digital Agency</h1>
-                        <h2 className='service-animation'>Techie IT offers everything from web design, corporate identity, digital marketing, mobile, and brand positioning.</h2>
-                        <p >Techie IT Pvt. Ltd. is a Nepali IT company that specializes in providing IT support and solution to individuals as well as small and medium businesses.<br/><br/>Established in 2015 with aim to be “your enthusiastic supporter”, we value the development of long term relationships with our clients. We always aim to demonstrate integrity and reliability, and to ultimately become a trusted partner.
-                        </p>
-                    </div>
-                    <div className="col-md-6">
-                        <SvgComponent/>
-                    </div>
-                </div>
-                <div className="services">
-                    <div className="row d-flex align-items-center" style={{position: "relative"}}>
-                      <div className="col-md-6" >
-                        <img src="./img/services/design-wire-sk.svg" className="img-fluid" id="design-wire-sk" />
-                      </div>
-                      <div className="col-md-6" style={{position:"absolute"}} >
-                        <img src="./img/services/design-wire.svg" id="design-wire"  />
-                      </div>
-                      <div className="col-md-6 parallex">
-                        <h2>Responsive UI/UX Design</h2>
-                        <p>We recognize the fact that usability, functionality, and visualization are three of the most important factors when designing interfaces or websites. Using this strategy, we work with you to ensure that your messaging and marketing goals are realized with the designs we create.</p>
-                      </div>
-                    </div>
-                    <div className="row d-flex align-items-center" style={{position: "relative"}}>
-                    <div className="col-md-6 text-right parallex">
-                      <h2>Website Development</h2>
-                      <p>With professional designers and developers are dedicated to creating powerful, effective and engaging websites. We specialize in developing international standard compliant websites that are compatible with the latest devices.</p>
-                    </div>
-                    <div className="col-md-6" style={{position:"relative"}}>
-                      <img src="/img/services/webdevelopment-wire.svg" id='webdevelopment-wire' style={{position:"absolute"}} className="img-fluid" />
-                      <img src="/img/services/webdevelopment-wire-sk.svg" id='webdevelopment-wire-sk' className="img-fluid" />
-                    </div>
-                  </div>
-                </div>	
+            <div className="col-md-6">
+              <SvgComponent />
             </div>
-            {/* </div> */}
-	    </div>
-      <WhatweDo whatwedo={what_we_do}/>
+          </div>
+          <div className="services">
+            <ServiceSection mydata={services} />
+          </div>
+        </div>
+        {/* </div> */}
+      </div>
+      <WhatweDo whatwedo={what_we_do} />
     </Fragment>
-    )
-}
+  );
+};
 
 function SvgComponent(props) {
   return (
@@ -164,21 +158,20 @@ function SvgComponent(props) {
         </g>
       </g>
     </svg>
-  )
+  );
 }
 export async function getStaticProps() {
-    const services = await fetch(`${config.URL}/services`)
-    const what_we_do = await fetch(`${config.URL}/what-we-dos`)
-    const services_data = await services.json()
-    const what_we_do_data = await what_we_do.json()
-  
-    return { 
-      props: 
-          { 
-            services:services_data,
-            what_we_do:what_we_do_data,
-          },
-        // revalidate:1*60, 
-    };
-  }
-export default index
+  const services = await fetch(`${config.URL}/services`);
+  const what_we_do = await fetch(`${config.URL}/what-we-dos`);
+  const services_data = await services.json();
+  const what_we_do_data = await what_we_do.json();
+
+  return {
+    props: {
+      services: services_data,
+      what_we_do: what_we_do_data,
+    },
+    // revalidate:1*60,
+  };
+}
+export default index;

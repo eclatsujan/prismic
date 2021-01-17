@@ -1,14 +1,14 @@
-import Head from 'next/head';
-import React, {Fragment, useRef} from 'react';
-import WhatweDo from '../components/WhatweDo';
-import Banner from '../components/UI/banner';
+import Head from "next/head";
+import React, { Fragment, useRef } from "react";
+import WhatweDo from "../components/WhatweDo";
+import Banner from "../components/UI/banner";
 
-import Link from 'next/link'
-import WebDevelopment from '../components/UI/web-development';
-import config from '../config';
+import Link from "next/link";
+import WebDevelopment from "../components/UI/web-development";
+import config from "../config";
+import ServiceSection from "../components/ServiceSection";
 
- function Home({services,what_we_do}) {
-
+function Home({ services, what_we_do }) {
   // const webSvgRef = useRef(null)
 
   return (
@@ -16,8 +16,8 @@ import config from '../config';
       <Head>
         <title>Techie IT</title>
       </Head>
-      <Banner/>
-        
+      <Banner />
+
       <div className="as">
         <div className="t-circle">
           <Tcircle />
@@ -26,7 +26,16 @@ import config from '../config';
           <div className="container">
             <div className="row d-flex justify-content-center">
               <div className="col-md-9">
-                <h2>Techie IT is a Nepali IT company that specializes in providing IT support and solution to individuals as well as small and medium businesses.<br/><span>We seek out challenging and fulfilling projects that combine design and technology in unique ways.</span></h2>
+                <h2>
+                  Techie IT is a Nepali IT company that specializes in providing
+                  IT support and solution to individuals as well as small and
+                  medium businesses.
+                  <br />
+                  <span>
+                    We seek out challenging and fulfilling projects that combine
+                    design and technology in unique ways.
+                  </span>
+                </h2>
               </div>
             </div>
           </div>
@@ -34,94 +43,106 @@ import config from '../config';
         <section className="services">
           <div className="roll-text">Areas of Expertise</div>
           <div className="container">
-            <div className="row d-flex align-items-center" style={{position: "relative"}}>
-                <div className="col-md-6" >
-                  <img src="./img/services/design-wire-sk.svg" className="img-fluid" id="design-wire-sk" />
-                </div>
-                <div className="col-md-6" style={{position:"absolute"}} >
-                  <img src="./img/services/design-wire.svg" id="design-wire"  />
-                </div>
-              <div className="col-md-6 parallex">
-                <h2>Responsive UI/UX Design</h2>
-                <p>We recognize the fact that usability, functionality, and visualization are three of the most important factors when designing interfaces or websites. Using this strategy, we work with you to ensure that your messaging and marketing goals are realized with the designs we create.</p>
-              </div>
-            </div>
-            <div className="row d-flex align-items-center" style={{position: "relative"}}>
-              <div className="col-md-6 text-right parallex">
-                <h2>Website Development</h2>
-                <p>With professional designers and developers are dedicated to creating powerful, effective and engaging websites. We specialize in developing international standard compliant websites that are compatible with the latest devices.</p>
-              </div>
-              <div className="col-md-6" style={{position:"relative"}}>
-                <img src="/img/services/webdevelopment-wire.svg" id='webdevelopment-wire' style={{position:"absolute"}} className="img-fluid" />
-                <img src="/img/services/webdevelopment-wire-sk.svg" id='webdevelopment-wire-sk' className="img-fluid" />
-              </div>
-            </div>
-            <div className="row d-flex align-items-center" style={{position:"relative"}}>
-              <div className="col-md-6">
-                <img src="img/services/appdevelopment-wire.svg" id="appdevelopment-wire" className="img-fluid"/>
-              </div>
-              <div className="col-md-6" style={{position:"absolute"}}>
-                <img src="img/services/appdevelopment-wire-sk.svg" id="appdevelopment-wire-sk"  className="img-fluid" />
-              </div>
-              <div className="col-md-6 parallex">
-                <h2>Apps Development</h2>
-                <p>Digital marketing, an approach where products and services are marketed in digital mediums is a new non-linear marketing, designed to overcome traditional environment, where customer engagement is challenging but essential.</p>
-              </div>
-            </div>
-            <div className="row d-flex align-items-center">
-              <div className="col-md-6 text-right parallex">
-                <h2>Creative Marketing</h2>
-                <p>Digital marketing, an approach where products and services are marketed in digital mediums is a new non-linear marketing, designed to overcome traditional environment, where customer engagement is challenging but essential.</p>
-              </div>
-              <div className="col-md-6"  style={{position: "relative"}} >
-                <img src="img/services/digitalcontent-wire-sk.svg" id="digitalcontent-wire-sk" style={{position: "absolute"}} className="img-fluid" />
-                <img src="img/services/digitalcontent-wire.svg" id="digitalcontent-wire" className="img-fluid" />
-              </div>
-            </div>
+            <ServiceSection mydata={services} />
             <div className="row rdmore">
               <div className="col-md-12 text-center">
-                <Link href='/services' passHref >
-                <a className="rdbtn" >more services <i className="fas fa-long-arrow-alt-right"></i></a>
+                <Link href="/services" passHref>
+                  <a className="rdbtn">
+                    more services{" "}
+                    <i className="fas fa-long-arrow-alt-right"></i>
+                  </a>
                 </Link>
               </div>
             </div>
           </div>
         </section>
-        <WhatweDo whatwedo ={what_we_do}/>
-    </div>
-    
+        <WhatweDo whatwedo={what_we_do} />
+      </div>
+
       <div className="f-top" id="workedWith">
         <div className="container">
           <div className="row d-flex align-items-center">
             <div className="col-md-4">
               <h2>We’ve worked with big and small alike.</h2>
-              <p>We’ve been grateful to partner with a wide variety of businesses. These are some of the clients who have trusted us to realize their projects.</p>
+              <p>
+                We’ve been grateful to partner with a wide variety of
+                businesses. These are some of the clients who have trusted us to
+                realize their projects.
+              </p>
             </div>
             <div className="col-md-8">
               <ul className="row">
                 <li className="col-md-3 col-4">
-                  <a href="#"><img src="img/client/kathmandupati.png" alt="KathmanduPati" className="img-fluid"/></a>
+                  <a href="#">
+                    <img
+                      src="img/client/kathmandupati.png"
+                      alt="KathmanduPati"
+                      className="img-fluid"
+                    />
+                  </a>
                 </li>
                 <li className="col-md-3 col-4">
-                  <a href="#"><img src="img/client/health-aawaj.png" alt="KathmanduPati" className="img-fluid"/></a>
+                  <a href="#">
+                    <img
+                      src="img/client/health-aawaj.png"
+                      alt="KathmanduPati"
+                      className="img-fluid"
+                    />
+                  </a>
                 </li>
                 <li className="col-md-3 col-4">
-                  <a href="#"><img src="img/client/jatatatai.png" alt="KathmanduPati" className="img-fluid"/></a>
+                  <a href="#">
+                    <img
+                      src="img/client/jatatatai.png"
+                      alt="KathmanduPati"
+                      className="img-fluid"
+                    />
+                  </a>
                 </li>
                 <li className="col-md-3 col-4">
-                  <a href="#"><img src="img/client/utsav-deals.png" alt="KathmanduPati" className="img-fluid" /></a>
+                  <a href="#">
+                    <img
+                      src="img/client/utsav-deals.png"
+                      alt="KathmanduPati"
+                      className="img-fluid"
+                    />
+                  </a>
                 </li>
                 <li className="col-md-3 col-4">
-                  <a href="#"><img src="img/client/enroz.png" alt="KathmanduPati" className="img-fluid"/></a>
+                  <a href="#">
+                    <img
+                      src="img/client/enroz.png"
+                      alt="KathmanduPati"
+                      className="img-fluid"
+                    />
+                  </a>
                 </li>
                 <li className="col-md-3 col-4">
-                  <a href="#"><img src="img/client/rara-films.png" alt="KathmanduPati" className="img-fluid"/></a>
+                  <a href="#">
+                    <img
+                      src="img/client/rara-films.png"
+                      alt="KathmanduPati"
+                      className="img-fluid"
+                    />
+                  </a>
                 </li>
                 <li className="col-md-3 col-4">
-                  <a href="#"><img src="img/client/west-himalaya.png" alt="KathmanduPati" className="img-fluid"/></a>
+                  <a href="#">
+                    <img
+                      src="img/client/west-himalaya.png"
+                      alt="KathmanduPati"
+                      className="img-fluid"
+                    />
+                  </a>
                 </li>
                 <li className="col-md-3 col-4">
-                  <a href="#"><img src="img/client/education-samachar.png" alt="KathmanduPati" className="img-fluid"/></a>
+                  <a href="#">
+                    <img
+                      src="img/client/education-samachar.png"
+                      alt="KathmanduPati"
+                      className="img-fluid"
+                    />
+                  </a>
                 </li>
               </ul>
             </div>
@@ -129,7 +150,7 @@ import config from '../config';
         </div>
       </div>
     </Fragment>
-  )
+  );
 }
 function Tcircle() {
   return (
@@ -201,23 +222,22 @@ function Tcircle() {
         />
       </g>
     </svg>
-  )
+  );
 }
 
 export async function getStaticProps() {
-  const services = await fetch(`${config.URL}/services`)
-  const what_we_do = await fetch(`${config.URL}/what-we-dos`)
-  const services_data = await services.json()
-  const what_we_do_data = await what_we_do.json()
+  const services = await fetch(`${config.URL}/services`);
+  const what_we_do = await fetch(`${config.URL}/what-we-dos`);
+  const services_data = await services.json();
+  const what_we_do_data = await what_we_do.json();
 
-  return { 
-    props: 
-        { 
-          services:services_data,
-          what_we_do:what_we_do_data,
-        },
-      // revalidate:1*60, 
+  return {
+    props: {
+      services: services_data,
+      what_we_do: what_we_do_data,
+    },
+    // revalidate:1*60,
   };
 }
 
-export default Home
+export default Home;
