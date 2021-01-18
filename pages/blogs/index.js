@@ -10,25 +10,6 @@ function index({ blogs, what_we_do, page, noofBlogs }) {
   const lastpage = Math.ceil(noofBlogs / 2);
   return (
     <div>
-      <header className="row d-flex align-items-center " style={{ zIndex: 2 }}>
-        <div className="col-md-1">
-          <a href="#">
-            <img src="img/favicon.svg" className="img-fluid" alt={"ajahsjkd"} />
-          </a>
-        </div>
-        <div className="col-md-11">
-          <ul>
-            <li>
-              <a href="#">Blog</a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fas fa-bars" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </header>
       <div>
         <div className="container">
           <div className="row">
@@ -81,6 +62,7 @@ function index({ blogs, what_we_do, page, noofBlogs }) {
                     Previous
                   </button>
                 </li>
+
                 {/* <li className="page-item">
                   <a className="page-link" href="#">
                     1

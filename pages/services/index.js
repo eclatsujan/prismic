@@ -160,7 +160,7 @@ function SvgComponent(props) {
     </svg>
   );
 }
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const services = await fetch(`${config.URL}/services`);
   const what_we_do = await fetch(`${config.URL}/what-we-dos`);
   const services_data = await services.json();

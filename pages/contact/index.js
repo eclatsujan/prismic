@@ -1,3 +1,5 @@
+import emailjs from "emailjs-com";
+
 import React, { useState, useRef } from "react";
 import config from "../../config";
 
@@ -10,7 +12,7 @@ function index() {
     services: "",
     price_range: "",
     messsage: "",
-    error: true,
+    error: null,
   });
   const errString = "This field is required";
   const [showAlert, setShowAlert] = useState(false);
@@ -29,7 +31,6 @@ function index() {
   });
   const [price_range, setPriceRange] = useState("");
   const [message, setMessage] = useState("");
-
   const [sectionShow, setSectionShow] = useState({
     1: true,
     2: false,
@@ -108,17 +109,22 @@ function index() {
     console.log(errors.email.length);
     console.log(errors.phone.length);
 
-    // if (errors.error == false) {
-    //   goNext();
-    // }
-
     if (
+      errors.error != null &&
       errors.name.length == 0 &&
       errors.email.length == 0 &&
       errors.phone.length == 0
     ) {
       goNext();
     }
+
+    // if (
+    //   errors.name.length == 0 &&
+    //   errors.email.length == 0 &&
+    //   errors.phone.length == 0
+    // ) {
+    //   goNext();
+    // }
     //     if (
     //       !errors.name.length > 2 &&
     //       !errors.email.length > 2 &&
@@ -184,12 +190,6 @@ function index() {
 
   const saveData = (e) => {
     setLoading(true);
-    console.log(name);
-    console.log(phone);
-    console.log(email);
-    console.log(price_range);
-    console.log(message);
-    console.log(services);
     function trueValues(obj) {
       let newObj = [];
       for (var key in obj) {
@@ -199,17 +199,23 @@ function index() {
       return newObj;
     }
     let required_services = trueValues(services).toString();
-    console.log(required_services);
-    axios
-      .post(`${config.URL}/quotes`, {
+    fetch(`${config.URL}/quotes`, {
+      method: "POST",
+      // mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         name,
         phone,
         email,
         price: price_range,
         message,
         services: required_services,
-      })
-      .then(function (response) {
+      }),
+    })
+      .then((response) => {
+        console.log("klashdj");
         setLoading(false);
         setSectionShow({
           1: true,
@@ -229,35 +235,77 @@ function index() {
           setShowAlert(false);
         }, 5000);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.error("Error:", error);
       });
+
+    // axios
+    //   .post(`${config.URL}/quotes`, {
+    //     name,
+    //     phone,
+    //     email,
+    //     price: price_range,
+    //     message,
+    //     services: required_services,
+    //   })
+    //   .then(function (response) {
+    //     setLoading(false);
+    //     setSectionShow({
+    //       1: true,
+    //       2: false,
+    //       3: false,
+    //       4: false,
+    //     });
+    //     setShowAlert(true);
+    //     setName("");
+    //     setEmail("");
+    //     setPriceRange("");
+    //     setMessage("");
+    //     setServices("");
+    //     setPhone("");
+
+    //     setTimeout(() => {
+    //       setShowAlert(false);
+    //     }, 5000);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  };
+  let templateparams = {
+    subject: "",
+    name: "ram",
+    from: "uncountable81@gmail.com",
+    phone: "989237846",
+    to: "praweshpanthi@gmail.com",
+  };
+  const clicked = (e) => {
+    // e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "gmail",
+        "template_5msqth8",
+        templateparams,
+        "user_iKyDrxQuHF4wVDHcMz9rC"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    console.log("ahgsdfh");
   };
   return (
     <div>
-      <header className="row d-flex align-items-center " style={{ zIndex: 2 }}>
-        <div className="col-md-1">
-          <a href="#">
-            <img src="img/favicon.svg" className="img-fluid" alt />
-          </a>
-        </div>
-        <div className="col-md-11">
-          <ul>
-            <li>
-              <a href="#">Contact Us</a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fas fa-bars" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </header>
       <div className="container">
         <div className="row">
           <div className="col-md-12 rd-pag">
             <span>Request A Quote</span>
+
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -297,16 +345,16 @@ function index() {
                   </span>
                 </h1>
               </div>
-              {showAlert && (
-                <div class="alert alert-success" role="alert">
-                  We Will contact you soon
-                </div>
-              )}
 
               <form
                 className="col-md-9 rdform"
                 // onSubmit={handleSubmit(onSubmit)}
               >
+                {showAlert && (
+                  <div class="alert alert-success" role="alert">
+                    We Will contact you soon
+                  </div>
+                )}
                 <div
                   style={{
                     display: sectionShow[1] ? "" : "none",

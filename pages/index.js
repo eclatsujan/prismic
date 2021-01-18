@@ -10,7 +10,9 @@ import ServiceSection from "../components/ServiceSection";
 
 function Home({ services, what_we_do }) {
   // const webSvgRef = useRef(null)
-
+  const clicked = () => {
+    alert("ghgg");
+  };
   return (
     <Fragment>
       <Head>
