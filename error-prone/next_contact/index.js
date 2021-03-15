@@ -446,7 +446,6 @@ function Step2({ previous, next, onServiceChange, currentStep, servicesChoosen }
                     </button>
                     <button
                         type="button"
-                        disabled={servicesChoosen.length > 0 ? false : true}
                         className="btn btn-lg btn-primary"
                         onClick={() => next()}
                     >
@@ -564,9 +563,6 @@ function Step3({  currentStep, next, onChange, previous, budget }) {
                     >
                         NEXT
                     </button>
-                    {/* <button type='submit'
-                        disabled={(name && email && budget && phone && servicesChoosen.length > 0) ? false : true}
-                        className="btn btn-lg btn-primary">NEXT</button> */}
                 </div>
             </div>
         </Fragment>
@@ -605,7 +601,7 @@ function Step4({ currentStep, onChange, previous, budget, message, name, email, 
                     </button>
                     
                     <button type='submit'
-                        disabled={(name && email && budget && phone && servicesChoosen.length > 0) ? false : true}
+                        disabled={(name && email && budget && phone) ? false : true}
                         className="btn btn-lg btn-primary" >Submit</button>
                 </div>
             </div>

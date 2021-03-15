@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 
 module.exports = {
+  target: "serverless",
   // Target must be serverless
   webpack(config) {
     config.plugins.push(

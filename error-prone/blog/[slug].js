@@ -180,9 +180,14 @@ function BlogDetail({ post,error,what_we_do }) {
 export async function getStaticPaths() {
   let res = await fetch(`${config.URL}/blogs`);
   let posts = await res.json();
-  let paths = posts.map((post) => ({
-    params: { slug: post.slug.toString() },
-  }));
+  let paths=[];
+  
+  if(posts.length>0){
+    paths= posts.map((post) => ({
+      params: { slug: post.slug.toString() },
+    }));
+  }
+  
   return {
     paths,
     fallback: false,
