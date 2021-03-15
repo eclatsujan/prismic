@@ -14,7 +14,7 @@
     "start": "node server.js -p $PORT"
   },
   "dependencies": {
-    "@apollo/react-components":"^4.0.0",
+    "@apollo/react-components": "^4.0.0",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
@@ -22,9 +22,10 @@
     "caniuse-lite": "^1.0.30001178",
     "emailjs-com": "^2.6.4",
     "express": "^4.17.1",
+    "graphql": "^15.5.0",
     "gsap": "^3.4.2",
-    "graphql":"^15.5.0",
     "jquery": "^3.5.1",
+    "moment": "^2.29.1",
     "next": "9.4.4",
     "next-on-netlify": "^2.9.0",
     "node": "^14.8.0",
