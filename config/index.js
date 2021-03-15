@@ -1,4 +1,4 @@
 export default {
-  URL: "http://localhost:1337",
+  URL: "https://npm.resham.info.np",
   REACT_APP_MAILCHIMP_URL: "",
 };

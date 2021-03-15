@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 function index({ blogs, what_we_do, page, noofBlogs }) {
   const router = useRouter();
-  console.log(router);
   const lastpage = Math.ceil(noofBlogs / 2);
   return (
     <div>
@@ -106,6 +105,7 @@ function index({ blogs, what_we_do, page, noofBlogs }) {
     </div>
   );
 }
+
 export async function getServerSideProps({ query: { page = 1 } }) {
   const start = +page === 1 ? 0 : (+page - 1) * 2;
   const blogs = await fetch(`${config.URL}/blogs?_limit=2&_start=${start}`);

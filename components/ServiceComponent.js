@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import config from "../../frontend-techie-it/config";
+import config from "../config/index";
 
 function ServiceComponent({ ser_data, index }) {
   return (
