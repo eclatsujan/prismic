@@ -1,4 +1,4 @@
 export default {
-  URL: "http://localhost:1337",
+  URL: process.env.SERVER_URL,
   REACT_APP_MAILCHIMP_URL: "",
 };
