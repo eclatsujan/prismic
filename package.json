@@ -10,6 +10,7 @@
     "dev": "next dev",
     "server": "node server.js",
     "build": "next build",
+    "postbuild": "next-on-netlify",
     "start": "node server.js -p $PORT"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "gsap": "^3.4.2",
     "jquery": "^3.5.1",
     "next": "9.4.4",
+    "next-on-netlify": "^2.9.0",
     "node": "^14.8.0",
     "node-sass": "^4.14.1",
     "react": "16.13.1",
