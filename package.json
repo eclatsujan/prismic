@@ -9,9 +9,11 @@
   "scripts": {
     "dev": "next dev",
     "server": "node server.js",
+    "export":"next export",
     "build": "next build",
     "postbuild": "next-on-netlify",
-    "start": "node server.js -p $PORT"
+    "start": "node server.js -p $PORT",
+    "deploy":"yarn build && yarn export"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
