@@ -1,9 +1,10 @@
 import React, { Fragment , useEffect} from 'react'
 import LoadingSvg from './loading';
 import {  TweenLite, Power4, gsap} from 'gsap';
+import {Link, RichText, Date} from 'prismic-reactjs';
 
-const banner = () => {
-
+const banner = ({title,description}) => {
+    console.log(title);
     useEffect(() => {
         if(process.browser){
             gsap.to("body", 0, {visibility:'visible'})
@@ -55,9 +56,10 @@ const banner = () => {
             <div className="container" style={{background: "transparent", transform: "inherit"}} >
             <div className="row" >
                 <div className="col-md-12"  >
-                <p className="t-text" >Are you ready to make your brand</p>
-                <div className="clip-text clip-text_one clip-text--cover" >Remarkable?</div>
-                <p className="b-text">So are we.</p>
+                <p className="t-text" >{RichText.asText(title)}</p>
+                <div className="clip-text clip-text_one clip-text--cover" >
+                    {RichText.asText(description)}
+                    </div>
                 </div>
             </div>
             </div>

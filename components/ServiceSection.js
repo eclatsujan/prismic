@@ -5,25 +5,21 @@ import ServiceComponent from "./ServiceComponent";
 // import useFetch from '../../other/hooks/useFetch';
 // import Service from './Service';
 
-function ServiceSection({ mydata }) {
+function ServiceSection({ services }) {
   // const fetcher = url => fetch(url).then(r => r.json())
   // const { data, error } = useSWR(`http://localhost:1337/services`, fetcher)
-  console.log("mydata");
-  if (mydata.statusCode && mydata.statusCode == 403) {
-    return "Cannot Load data due to some error";
-  }
-  if (mydata.length == 0) {
+  if (services.length == 0) {
     return "No any data here";
   }
 
   // const {data,loading} =  useFetch(`${config.URL}/services`)
   return (
     <>
-      {mydata && (
+      {services && (
         <>
-          {mydata.map((single, id) => (
+          {services.map((service, id) => (
             <React.Fragment key={id}>
-              <ServiceComponent ser_data={single} index={id + 1} />
+              <ServiceComponent service={service} index={id + 1} />
             </React.Fragment>
           ))}
         </>

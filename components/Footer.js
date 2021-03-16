@@ -1,10 +1,11 @@
 import React, { Fragment, useRef } from 'react';
 import FooterSvg from './UI/footer'
-import Link from 'next/link'
+import {Link, RichText, Date} from 'prismic-reactjs';
 
 const Footer = props => {
     const svgRef = useRef(null)
- 
+    const {settings:{email,phone,social_medias,address}}=props;
+    console.log(social_medias);
     return (
         <Fragment>
         <footer ref={svgRef}>
@@ -14,26 +15,26 @@ const Footer = props => {
                     <div className="col-md-6">
                         <span className="large">Connect with us.</span>
                         <ul>
-                            <li><a href="#">Fb <i className="fas fa-long-arrow-alt-right"></i></a></li>
-                            <li><a href="#">Tw <i className="fas fa-long-arrow-alt-right"></i></a></li>
-                            <li><a href="#">It <i className="fas fa-long-arrow-alt-right"></i></a></li>
-                            <li><a href="#">Li <i className="fas fa-long-arrow-alt-right"></i></a></li>
+                            {social_medias.length>0?social_medias.map(({title,url},key)=>{
+                                return (
+                                    <li key={key}>
+                                        <a href={url}>
+                                            {RichText.render()}<i className="fas fa-long-arrow-alt-right"></i>
+                                        </a>
+                                    </li>
+                                )
+                            }):null}
                         </ul>
                         <address>
-                            <p>+977 9849068407
-                                <br/>
-                                7th Floor, Sankhamul Tower, Sankhamul, Kathmandu 
-                            </p>
+                            <p>{RichText.asText(phone)} </p>
+                            <p>{RichText.asText(address)}</p>
                         </address>
                     </div>
                     <div className="col-md-6 text-right">
                         <p>Want to know more about us?</p>
                         <div className="rdmore">
                             <div className="text-right">
-                                <Link href='/services' passHref>
-                                <a className="rdbtn" >contact us 
-                                <i className="fas fa-long-arrow-alt-right"></i></a>
-                                </Link>
+                            
                             </div>
                         </div>
                     </div>
